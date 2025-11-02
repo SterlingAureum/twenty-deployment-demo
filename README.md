@@ -16,16 +16,26 @@
 ## Deployment Instructions
 1. Clone the repository
 
+```bash
 git clone https://github.com/SterlingAureum/twenty-deployment-demo.git
 cd twenty-deployment-demo
+```
+
 2. Run the official installation script
 
+```bash
 bash scripts/install.sh
+```
+
 3. Start the project using the override file
 
+```bash
 docker compose -f docker-compose.yml -f docker-compose.override.yml up -d
+```
+
 4. Verify Redis persistence
 
+```bash
 docker exec -it twenty-redis-1 redis-cli
 > set testkey "hello"
 > exit
@@ -34,6 +44,8 @@ docker compose up -d
 docker exec -it twenty-redis-1 redis-cli
 > get testkey
 "hello"
+```
+
 ## Optimization Notes
 - Keep the official deployment structure
 
