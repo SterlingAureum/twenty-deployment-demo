@@ -9,51 +9,56 @@
 
 In `docker-compose.yml`, PostgreSQL service is usually named `db`:
 
-
+```bash
 services:
   db:
     image: postgres:15
     ...
-
+```
 Replace <db_container_name> with the actual container name found via docker ps.
 
 ## 2️⃣ Access the PostgreSQL Container
+```bash
 docker exec -it <db_container_name> psql -U postgres
-
+```
 
 Example:
-
+```bash
 docker exec -it twenty-db-1 psql -U postgres
+```
 
+- -U postgres logs in as the default superuser
 
--U postgres logs in as the default superuser
-
-Once inside psql, you can update the password
+- Once inside psql, you can update the password
 
 ## 3️⃣ Change the PostgreSQL Password
 
 Inside the psql prompt:
 
+```bash
 ALTER USER postgres PASSWORD 'new_password';
 \q
+```
 
 
-Replace 'new_password' with your desired password
+- Replace 'new_password' with your desired password
 
-If another user is used by your services, modify that username instead
+- If another user is used by your services, modify that username instead
 
 ## 4️⃣ Update the .env File
 
 Open the project .env file:
 
+```bash
 nano .env
 ### or vim .env
+```
 
 
 Update PG_DATABASE_PASSWORD:
-
+```bash
 PG_DATABASE_PASSWORD=new_password
-
+```
 
 Save the file.
 
@@ -61,12 +66,13 @@ Save the file.
 
 Apply the new password:
 
+```bash
 docker compose up -d
-
+```
 
 The project will restart all services
 
-server-1 will use the updated password to connect to PostgreSQL
+twenty-server-1 will use the updated password to connect to PostgreSQL
 
 Database data will remain intact
 
@@ -74,8 +80,9 @@ Database data will remain intact
 
 Check logs to confirm successful connection:
 
-docker compose logs server-1
-
+```bash
+docker compose logs twenty-server-1
+```
 
 There should no longer be any error like:
 
