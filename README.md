@@ -52,3 +52,28 @@ docker exec -it twenty-redis-1 redis-cli
 - Redis persistence + memory limit increases both demo and production usability
 
 - The demo project is simple and easy to run
+
+## Project Screenshots
+
+### 1️⃣ Twenty Web Interface
+Twenty CRM running locally on `http://localhost:3000`.  
+Shows the main dashboard and example data.
+
+![Twenty Web Interface](./docs/screenshot-web.png)
+
+---
+
+### 2️⃣ Redis Persistence Test
+Demonstrates Redis key-value persistence after container restart.  
+Shows that data set in Redis is retained due to AOF + volume configuration.
+
+![Redis Persistence Test](./docs/screenshot-redis.png)
+
+---
+
+### 3️⃣ Docker Services Status
+Displays the current status of Docker containers using `docker compose ps`.  
+All services (server, worker, db, redis) are healthy and running.
+
+![Docker Services Status](./docs/screenshot-docker.png)
+
